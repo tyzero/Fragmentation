@@ -1,4 +1,4 @@
-package android.support.v4.app;
+package androidx.fragment.app;
 
 
 import android.util.SparseArray;
@@ -6,7 +6,10 @@ import android.util.SparseArray;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+
+import androidx.fragment.app.FragmentManager;
 
 /**
  * http://stackoverflow.com/questions/23504790/android-multiple-fragment-transaction-ordering
@@ -152,7 +155,8 @@ public class FragmentationMagician {
             // Since v4-25.4.0，mActive: ArrayList -> SparseArray
             return getActiveList(fragmentManagerImpl.mActive);
         } catch (Exception e) {
-            e.printStackTrace();
+            FragmentManagerImpl fragmentManagerImpl = (FragmentManagerImpl) fragmentManager;
+             e.printStackTrace();
         }
         return fragmentManager.getFragments();
     }
@@ -166,6 +170,19 @@ public class FragmentationMagician {
         ArrayList<Fragment> fragments = new ArrayList<>(count);
         for (int i = 0; i < count; i++) {
             fragments.add(active.valueAt(i));
+        }
+        return fragments;
+    }
+
+    @SuppressWarnings("unchecked")
+    private static List<Fragment> getActiveListX(HashMap<String, Fragment> active) {
+        if (active == null) {
+            return Collections.EMPTY_LIST;
+        }
+        final int count = active.size();
+        ArrayList<Fragment> fragments = new ArrayList<>(count);
+        for (String key : active.keySet()) {
+            fragments.add(active.get(key));
         }
         return fragments;
     }
