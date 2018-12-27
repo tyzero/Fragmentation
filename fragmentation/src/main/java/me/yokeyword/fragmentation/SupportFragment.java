@@ -14,7 +14,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 /**
  * Base class for activities that use the support-based
  * {@link ISupportFragment} and
- * {@link android.support.v4.app.Fragment} APIs.
+ * {@link androidx.core.app.Fragment} APIs.
  * Created by YoKey on 17/6/22.
  */
 public class SupportFragment extends Fragment implements ISupportFragment {
