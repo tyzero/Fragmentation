@@ -13,6 +13,8 @@ Fragmentation is a powerful library managing Fragment for Android.
 
 It is designed for "Single Activity + Multi-Fragments" and "Multi-FragmentActivities + Multi-Fragments" architecture to simplify development process.
 
+## This fork for Migrating to AndroidX
+
 ## Demo
 The first demo shows the basic usage of the library. The second one shows the way to implement an app which is similar to Instagram. Complicated nested fragments' usage demo are also showed.
 
